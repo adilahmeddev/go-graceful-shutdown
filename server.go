@@ -16,6 +16,7 @@ type (
 	HTTPServer interface {
 		ListenAndServe() error
 		Shutdown(ctx context.Context) error
+		ServeHTTP(http.ResponseWriter, *http.Request)
 	}
 
 	// Server wraps around a HTTPServer and will gracefully shutdown when it receives a shutdown signal.
