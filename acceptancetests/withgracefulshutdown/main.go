@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	gracefulshutdown "github.com/quii/go-graceful-shutdown"
-	"github.com/quii/go-graceful-shutdown/acceptancetests"
+	gracefulshutdown "github.com/adilahmeddev/go-graceful-shutdown"
+	"github.com/adilahmeddev/go-graceful-shutdown/acceptancetests"
 )
 
 func main() {

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	gracefulshutdown "github.com/quii/go-graceful-shutdown"
-	"github.com/quii/go-graceful-shutdown/assert"
+	gracefulshutdown "github.com/adilahmeddev/go-graceful-shutdown"
+	"github.com/adilahmeddev/go-graceful-shutdown/assert"
 )
 
 func TestGracefulShutdownServer_Listen(t *testing.T) {

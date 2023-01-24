@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/quii/go-graceful-shutdown/acceptancetests"
+	"github.com/adilahmeddev/go-graceful-shutdown/acceptancetests"
 )
 
 func main() {

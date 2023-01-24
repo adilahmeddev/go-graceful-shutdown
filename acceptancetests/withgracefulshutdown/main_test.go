@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/quii/go-graceful-shutdown/acceptancetests"
-	"github.com/quii/go-graceful-shutdown/assert"
+	"github.com/adilahmeddev/go-graceful-shutdown/acceptancetests"
+	"github.com/adilahmeddev/go-graceful-shutdown/assert"
 )
 
 const (

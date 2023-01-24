@@ -21,7 +21,7 @@ type (
 	// Server wraps around a HTTPServer and will gracefully shutdown when it receives a shutdown signal.
 	Server struct {
 		shutdown <-chan os.Signal
-		delegate HTTPServer
+		Delegate HTTPServer
 		timeout  time.Duration
 	}
 
@@ -46,7 +46,7 @@ func WithTimeout(timeout time.Duration) ServerOption {
 // NewServer returns a Server that can gracefully shutdown on shutdown signals.
 func NewServer(server HTTPServer, options ...ServerOption) *Server {
 	s := &Server{
-		delegate: server,
+		Delegate: server,
 		timeout:  k8sDefaultTerminationGracePeriod,
 		shutdown: newInterruptSignalChannel(),
 	}
@@ -74,7 +74,7 @@ func (s *Server) delegateListenAndServe() chan error {
 	listenErr := make(chan error)
 
 	go func() {
-		if err := s.delegate.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := s.Delegate.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			listenErr <- err
 		}
 	}()
@@ -86,7 +86,7 @@ func (s *Server) shutdownDelegate(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, s.timeout)
 	defer cancel()
 
-	if err := s.delegate.Shutdown(ctx); err != nil && err != http.ErrServerClosed {
+	if err := s.Delegate.Shutdown(ctx); err != nil && err != http.ErrServerClosed {
 		return err
 	}
 	return ctx.Err()
